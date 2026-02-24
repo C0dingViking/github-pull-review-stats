@@ -42,6 +42,11 @@ EXCLUDED_LOGINS = {
     "copilot[bot]"
 }
 
+VALID_REVIEW_STATES = {
+    "APPROVED",
+    "REQUEST_CHANGES"
+}
+
 def get_all_pages(url, params=None):
     results = []
 
@@ -84,6 +89,9 @@ def fetch_review_counts():
             login = user["login"]
 
             if login in EXCLUDED_LOGINS or user.get("type") == "Bot":
+                continue
+
+            if review["state"] not in VALID_REVIEW_STATES:
                 continue
 
             counter[user["login"]] += 1

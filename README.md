@@ -71,6 +71,8 @@ All the setup is handled by the `Makefile`, hence you only need to execute the c
 make run
 ```
 
+> Linux users might need to run it in a virtual environment
+
 This will:
 
 1. Install Python dependencies (if not already installed)
